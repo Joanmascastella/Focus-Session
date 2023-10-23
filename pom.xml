@@ -60,7 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.mas.joan.focussession/com.mas.joan.focussession.HelloApplication</mainClass>
+                            <mainClass>com.mas.joan.focussession/com.mas.joan.focussession.FocusSession</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

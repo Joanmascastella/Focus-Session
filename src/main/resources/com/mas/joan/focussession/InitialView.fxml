@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="900" maxWidth="656.0" minHeight="900" minWidth="656.0" prefHeight="900" prefWidth="656.0" style="-fx-background-color: #282a3d;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mas.joan.focussession.Controller.FocusSessionController">
+
+    <children>
+        <AnchorPane layoutX="29.0" layoutY="22.0" prefHeight="449.0" prefWidth="287.0" style="-fx-background-color: #363852; -fx-background-radius: 15;">
+            <children>
+                <StackPane layoutX="52.0" layoutY="21.0" prefHeight="122.0" prefWidth="137.0">
+                    <Circle fill="#0e1a26" radius="91.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                    <Label id="countdownTicker" text="00:00" textFill="WHITE">
+                        <font>
+                            <Font name="Arial Bold" size="31.0" />
+                        </font>
+                    </Label>
+                </StackPane>
+            <Button layoutX="44.0" layoutY="225.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="199.0" style="-fx-background-color: #0e1a26;" text="Select amount of time" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="339.0" layoutY="22.0" prefHeight="296.0" prefWidth="287.0" style="-fx-background-color: #363852; -fx-background-radius: 15;" />
+        <AnchorPane layoutX="29.0" layoutY="511.0" prefHeight="125.0" prefWidth="287.0" style="-fx-background-color: #363852; -fx-background-radius: 15;" />
+        <AnchorPane layoutX="339.0" layoutY="340.0" prefHeight="296.0" prefWidth="287.0" style="-fx-background-color: #363852; -fx-background-radius: 15;" />
+    </children>
+</AnchorPane>
