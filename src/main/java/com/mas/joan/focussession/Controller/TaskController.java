@@ -49,6 +49,7 @@ public class TaskController implements Initializable {
                 selectedTaskForEdit = newSelection;
                 title.setText(selectedTaskForEdit.getTitle());
                 description.setText(selectedTaskForEdit.getDescription());
+
             }
         });
         loadData();

@@ -4,6 +4,7 @@ import com.mas.joan.focussession.Enums.Status;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 
 public class Task implements Serializable {
@@ -14,8 +15,9 @@ public class Task implements Serializable {
 
     private Date start_time;
 
+
     public Task(LocalDate start_time, String title, String description, double total_time, Status status) {
-        this.start_time = new Date();
+        this.start_time = Date.from(start_time.atStartOfDay(ZoneId.systemDefault()).toInstant());
         this.title = title;
         this.description = description;
         this.total_time = total_time;
@@ -60,6 +62,6 @@ public class Task implements Serializable {
     }
 
     public void setStart_time(LocalDate start_time) {
-       this.start_time = start_time;
+        this.start_time = Date.from(start_time.atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
 }
