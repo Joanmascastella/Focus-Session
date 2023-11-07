@@ -1,6 +1,6 @@
 package com.mas.joan.focussession;
 
-import com.mas.joan.focussession.Controller.FocusSessionController;
+import com.mas.joan.focussession.Controller.MainViewController;
 import com.mas.joan.focussession.Database.Database;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +17,7 @@ public class FocusSession extends Application {
         database = new Database();
         FXMLLoader fxmlLoader = new FXMLLoader(FocusSession.class.getResource("MainView.fxml"));
         Parent root = fxmlLoader.load();
-        FocusSessionController focusSessionController = fxmlLoader.getController();
+        MainViewController focusSessionController = fxmlLoader.getController();
        focusSessionController.setDatabase(database);
         Scene scene = new Scene(root, 488, 369);
         stage.setTitle("Focus Sessions");

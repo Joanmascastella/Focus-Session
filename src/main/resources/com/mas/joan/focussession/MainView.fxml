@@ -2,36 +2,35 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900" prefWidth="656.0" style="-fx-background-color: #282a3d;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mas.joan.focussession.Controller.FocusSessionController">
+<?import javafx.geometry.Insets?>
+<HBox fillHeight="true" spacing="0" style="-fx-background-color: #202130;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mas.joan.focussession.Controller.MainViewController">
     <!-- NavigationView -->
-    <VBox prefHeight="536.0" prefWidth="181.0" spacing="10" style="-fx-padding: 20px; -fx-background-color: #420400;">
-        <Button fx:id="dashboardButton" prefHeight="31.0" prefWidth="139.0" style="-fx-background-color: #520601;" text="Dashboard" textFill="WHITE">
-            <font>
-                <Font size="15.0" />
-            </font>
+    <VBox HBox.hgrow="ALWAYS" fillWidth="true" spacing="10" style="-fx-padding: 1em; -fx-background-color: #0c0c12;">
+        <Button fx:id="focusButton" onAction="#onFocusButtonClick" style="-fx-background-color: #ffffff;" text="Focus">
+            <VBox.margin>
+                <Insets bottom="5.0" />
+            </VBox.margin>
+            <VBox.vgrow>ALWAYS</VBox.vgrow>
         </Button>
-        <Button fx:id="createOrderButton"  prefHeight="31.0" prefWidth="139.0" style="-fx-background-color: #520601;" text="Create Order" textFill="WHITE">
-            <font>
-                <Font size="15.0" />
-            </font>
+        <Button fx:id="tasksButton" onAction="#onTasksButtonClick" style="-fx-background-color: #ffffff;" text="Tasks">
+            <VBox.margin>
+                <Insets bottom="5.0" />
+            </VBox.margin>
+            <VBox.vgrow>ALWAYS</VBox.vgrow>
         </Button>
-        <Button fx:id="productInventoryButton" style="-fx-background-color: #520601;" text="Product Inventory" textFill="WHITE">
-            <font>
-                <Font size="15.0" />
-            </font>
+        <Button fx:id="overviewButton" onAction="#onOverviewButtonClick" style="-fx-background-color: #ffffff;" text="Overview">
+            <VBox.margin>
+                <Insets bottom="5.0" />
+            </VBox.margin>
+            <VBox.vgrow>ALWAYS</VBox.vgrow>
         </Button>
-        <Button fx:id="orderHistoryButton"  prefHeight="31.0" prefWidth="139.0" style="-fx-background-color: #520601;" text="Order History" textFill="WHITE">
-            <font>
-                <Font size="15.0" />
-            </font>
-        </Button>
-    </VBox>
+     </VBox>
 
     <!-- NewViewContainer -->
-    <VBox fx:id="newViewContainter" prefHeight="400.0" prefWidth="660" spacing="10">
+    <VBox fx:id="newViewContainer" HBox.hgrow="ALWAYS" fillWidth="true" spacing="10">
     </VBox>
     <Label fx:id="message" style="-fx-text-fill: red" />
 </HBox>
+
