@@ -3,27 +3,37 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<HBox style="-fx-background-color: #202130;" prefHeight="488" prefWidth="369"  xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mas.joan.focussession.Controller.MainViewController">
+<HBox prefHeight="488" prefWidth="369" style="-fx-background-color: #202130;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mas.joan.focussession.Controller.MainViewController">
     <!-- NavigationView -->
-    <VBox  spacing="10" style="-fx-padding: 1em; -fx-background-color: #0c0c12;">
-        <Button fx:id="focusButton" onAction="#onFocusButtonClick" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: #ffffff;" text="Focus">
+    <VBox spacing="10" style="-fx-padding: 1em; -fx-background-color: #0c0c12;">
+        <Button fx:id="focusButton" onAction="#onFocusButtonClick" prefHeight="5.0" prefWidth="114.0" style="-fx-background-color: #ffffff;" text="Focus">
             <VBox.margin>
                 <Insets bottom="5.0" />
             </VBox.margin>
             <VBox.vgrow>ALWAYS</VBox.vgrow>
+         <font>
+            <Font size="15.0" />
+         </font>
         </Button>
-        <Button fx:id="tasksButton" onAction="#onTasksButtonClick" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #ffffff;" text="Tasks">
+        <Button fx:id="tasksButton" onAction="#onTasksButtonClick" prefHeight="0.0" prefWidth="111.0" style="-fx-background-color: #ffffff;" text="Tasks">
             <VBox.margin>
                 <Insets bottom="5.0" />
             </VBox.margin>
             <VBox.vgrow>ALWAYS</VBox.vgrow>
+         <font>
+            <Font size="15.0" />
+         </font>
         </Button>
-        <Button fx:id="overviewButton" onAction="#onOverviewButtonClick" style="-fx-background-color: #ffffff;" text="Overview">
+        <Button fx:id="overviewButton" onAction="#onOverviewButtonClick" prefHeight="31.0" prefWidth="110.0" style="-fx-background-color: #ffffff;" text="Overview">
             <VBox.margin>
                 <Insets bottom="5.0" />
             </VBox.margin>
             <VBox.vgrow>ALWAYS</VBox.vgrow>
+         <font>
+            <Font size="15.0" />
+         </font>
         </Button>
      </VBox>
 

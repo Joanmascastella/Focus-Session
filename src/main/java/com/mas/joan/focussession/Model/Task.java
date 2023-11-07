@@ -17,6 +17,10 @@ public class Task implements Serializable {
         this.total_time = total_time;
         this.status = status;
     }
+    public Task(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
 
     public String getTitle() {
         return title;

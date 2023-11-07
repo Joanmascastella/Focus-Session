@@ -19,7 +19,7 @@ public class FocusSession extends Application {
         Parent root = fxmlLoader.load();
         MainViewController focusSessionController = fxmlLoader.getController();
        focusSessionController.setDatabase(database);
-        Scene scene = new Scene(root, 488, 369);
+        Scene scene = new Scene(root, 888, 569);
         stage.setTitle("Focus Sessions");
         stage.setScene(scene);
         stage.show();

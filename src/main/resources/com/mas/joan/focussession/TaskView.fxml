@@ -1,14 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.mas.joan.focussession.Controller.TaskController"
-            prefHeight="488" prefWidth="369">
+<VBox prefHeight="488" prefWidth="369" style="-fx-background-color: #202130" xmlns="http://javafx.com/javafx/17.0.2-ea"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mas.joan.focussession.Controller.TaskController">
+    <padding>
+        <Insets topRightBottomLeft="10"/>
+    </padding>
+    <Label text="Open Tasks" textFill="WHITE">
+        <font>
+            <Font size="20.0"/>
+        </font>
+    </Label>
+    <TableView fx:id="taskView">
+        <columns>
+            <TableColumn fx:id="titleRow" prefWidth="160" text="Task">
+            </TableColumn>
+            <TableColumn fx:id="descriptionRow" prefWidth="200" text="Description">
+            </TableColumn>
+            <TableColumn fx:id="timeRow" prefWidth="160" text="Time Elapsed">
+            </TableColumn>
+        </columns>
+    </TableView>
+
+    <VBox spacing="10">
+        <padding>
+            <Insets bottom="10" top="10"/>
+        </padding>
+        <TextField fx:id="title" promptText="Title"/>
+        <TextField fx:id="description" promptText="Description"/>
+    </VBox>
+
+    <HBox spacing="8" VBox.vgrow="NEVER">
+        <padding>
+            <Insets bottom="10" top="10"/>
+        </padding>
+        <Button fx:id="addTask" minWidth="-Infinity" onAction="#onAddTaskButtonClick">Add New Task</Button>
+        <Button fx:id="editTask" minWidth="-Infinity" onAction="#onEditTaskButtonClick">Edit Task</Button>
+        <Button fx:id="deleteTask" minWidth="-Infinity" onAction="#onDeleteButtonClick">Delete Task</Button>
+
+    </HBox>
 
 </VBox>

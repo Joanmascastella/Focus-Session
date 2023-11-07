@@ -8,6 +8,7 @@
 
 <VBox xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
+            style="-fx-background-color: #202130"
             fx:controller="com.mas.joan.focussession.Controller.FocusController"
             prefHeight="488" prefWidth="369">
 
