@@ -1,7 +1,10 @@
 package com.mas.joan.focussession;
 
+import com.mas.joan.focussession.Controller.FocusSessionController;
+import com.mas.joan.focussession.Database.Database;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -10,8 +13,13 @@ import java.io.IOException;
 public class FocusSession extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(FocusSession.class.getResource("InitialView.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 656, 656.0);
+        Database database;
+        database = new Database();
+        FXMLLoader fxmlLoader = new FXMLLoader(FocusSession.class.getResource("MainView.fxml"));
+        Parent root = fxmlLoader.load();
+        FocusSessionController focusSessionController = fxmlLoader.getController();
+       focusSessionController.setDatabase(database);
+        Scene scene = new Scene(root, 488, 369);
         stage.setTitle("Focus Sessions");
         stage.setScene(scene);
         stage.show();

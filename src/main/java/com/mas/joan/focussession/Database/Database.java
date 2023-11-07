@@ -1,9 +1,32 @@
 package com.mas.joan.focussession.Database;
 
-public class Database {
-    //Create an array list of tasks
-    //Create a method to add a task to the array list
+import com.mas.joan.focussession.Model.Task;
 
-    //Create a method to remove a task from the array list
+import java.util.ArrayList;
+import java.util.List;
+
+public class Database {
+
+   List<Task> taskList = new ArrayList<>();
+
+    public void addTask(Task task){
+        taskList.add(task);
+    }
+
+    public void removeTask(Task task){
+        taskList.remove(task);
+    }
+
+    public void editTask(Task task){
+        taskList.set(taskList.indexOf(task), task);
+    }
+
+    public Task getTask(Task task){
+        return taskList.get(taskList.indexOf(task));
+    }
+    //Create a method to serialize the array list
+
+    //Create a method to deserialize the array list
+
 
 }
