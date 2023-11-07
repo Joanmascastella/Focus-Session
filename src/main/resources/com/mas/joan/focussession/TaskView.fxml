@@ -59,6 +59,7 @@
         <Button fx:id="addTask" minWidth="-Infinity" onAction="#onAddTaskButtonClick">Add New Task</Button>
         <Button fx:id="editTask" minWidth="-Infinity" onAction="#onEditTaskButtonClick">Edit Task</Button>
         <Button fx:id="deleteTask" minWidth="-Infinity" onAction="#onDeleteButtonClick">Delete Task</Button>
+        <Button fx:id="closeTask" minWidth="-Infinity" onAction="#onCloseButtonClick">Close Task</Button>
 
     </HBox>
     <Label fx:id="message" style="-fx-text-fill: red" />

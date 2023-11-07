@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.text.Font?>
-<?import javafx.geometry.Insets?>
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      style="-fx-background-color: #202130"
-      fx:controller="com.mas.joan.focussession.Controller.OverviewController"
-      prefHeight="488" prefWidth="369">
+<VBox prefHeight="488" prefWidth="369" spacing="10" style="-fx-background-color: #202130" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mas.joan.focussession.Controller.OverviewController">
     <padding>
         <Insets topRightBottomLeft="10" />
     </padding>
@@ -21,16 +15,35 @@
             <Font size="20.0" />
         </font></Label>
     <HBox spacing="10">
-        <Label text="Search:"/>
-        <TextField fx:id="searchInput" promptText="Enter product"/>
+        <Label text="Search:" textFill="WHITE" />
+        <TextField fx:id="searchInput" promptText="Enter product" />
     </HBox>
-    <TableView fx:id="closedTaskView">
+    <TableView fx:id="taskView">
         <columns>
-            <TableColumn fx:id="closedTitleRow" prefWidth="70.99999558925629" text="Task">
+            <TableColumn fx:id="dateRow" prefWidth="100" text="Date Created">
+                <cellValueFactory>
+                    <PropertyValueFactory property="start_time" />
+                </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="closedDescriptionRow" prefWidth="159.40003204345703" text="Description">
+            <TableColumn fx:id="titleRow" prefWidth="160" text="Task">
+                <cellValueFactory>
+                    <PropertyValueFactory property="title" />
+                </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="closedTimeRow" prefWidth="118.80000305175781" text="Time Elapsed">
+            <TableColumn fx:id="descriptionRow" prefWidth="200" text="Description">
+                <cellValueFactory>
+                    <PropertyValueFactory property="description" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="timeRow" prefWidth="100" text="Time Elapsed">
+                <cellValueFactory>
+                    <PropertyValueFactory property="total_time" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="statusRow" prefWidth="160" text="Status">
+                <cellValueFactory>
+                    <PropertyValueFactory property="status" />
+                </cellValueFactory>
             </TableColumn>
         </columns>
     </TableView>

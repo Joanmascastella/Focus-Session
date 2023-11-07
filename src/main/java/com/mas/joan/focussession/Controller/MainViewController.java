@@ -45,14 +45,16 @@ public class MainViewController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             VBox navigationView = loader.load();
             Object controller = loader.getController();
-            if (controller instanceof FocusController focusController) {
-                focusController.setDatabase(database);
-            } else if (controller instanceof OverviewController overviewController) {
-                overviewController.setDatabase(database);
-            } else if (controller instanceof TaskController taskController) {
+            if (controller instanceof TaskController taskController) {
                 taskController.setDatabase(database);
                 taskController.loadData();
+            } else if (controller instanceof OverviewController overviewController) {
+                overviewController.setDatabase(database);
+                overviewController.loadData();
+            } else if (controller instanceof FocusController focusController) {
+                focusController.setDatabase(database);
             }
+
             newViewContainer.getChildren().setAll(navigationView);
         } catch (IOException e) {
             message.setText("Unable to find view");
@@ -60,6 +62,7 @@ public class MainViewController {
             message.setText("Error loading the view.");
         }
     }
+
 
     public void onFocusButtonClick() {
         loadView("/com/mas/joan/focussession/FocusView.fxml");
