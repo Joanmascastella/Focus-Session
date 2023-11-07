@@ -23,6 +23,7 @@ public class FocusSession extends Application {
         stage.setTitle("Focus Sessions");
         stage.setScene(scene);
         stage.show();
+        Runtime.getRuntime().addShutdownHook(new Thread(database::saveDatabaseToFile));
     }
 
     public static void main(String[] args) {
