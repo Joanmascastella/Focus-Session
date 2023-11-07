@@ -21,6 +21,7 @@ public class OverviewController implements Initializable {
     private Database database;
     public void setDatabase(Database database) {
         this.database = database;
+        loadData();
     }
 
     @Override

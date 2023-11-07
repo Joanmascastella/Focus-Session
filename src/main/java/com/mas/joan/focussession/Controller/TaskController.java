@@ -40,6 +40,7 @@ public class TaskController implements Initializable {
 
     public void setDatabase(Database database) {
         this.database = database;
+        loadData();
     }
 
     public TaskController() {

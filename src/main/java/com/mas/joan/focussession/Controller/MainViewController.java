@@ -45,14 +45,15 @@ public class MainViewController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             VBox navigationView = loader.load();
             Object controller = loader.getController();
-            if (controller instanceof TaskController taskController) {
+            if (controller instanceof FocusController focusController) {
+                focusController.setDatabase(database);
+                focusController.loadData();
+            } else if (controller instanceof TaskController taskController) {
                 taskController.setDatabase(database);
                 taskController.loadData();
             } else if (controller instanceof OverviewController overviewController) {
-                overviewController.setDatabase(database);
-                overviewController.loadData();
-            } else if (controller instanceof FocusController focusController) {
-                focusController.setDatabase(database);
+               overviewController.setDatabase(database);
+               overviewController.loadData();
             }
 
             newViewContainer.getChildren().setAll(navigationView);
