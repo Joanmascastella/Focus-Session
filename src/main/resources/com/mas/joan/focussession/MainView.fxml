@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<?import javafx.geometry.Insets?>
-<HBox fillHeight="true" spacing="0" style="-fx-background-color: #202130;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mas.joan.focussession.Controller.MainViewController">
+<HBox style="-fx-background-color: #202130;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mas.joan.focussession.Controller.MainViewController">
     <!-- NavigationView -->
-    <VBox HBox.hgrow="ALWAYS" fillWidth="true" spacing="10" style="-fx-padding: 1em; -fx-background-color: #0c0c12;">
-        <Button fx:id="focusButton" onAction="#onFocusButtonClick" style="-fx-background-color: #ffffff;" text="Focus">
+    <VBox fx:id="navigationBox" spacing="10" style="-fx-padding: 1em; -fx-background-color: #0c0c12;">
+        <Button fx:id="focusButton" onAction="#onFocusButtonClick" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: #ffffff;" text="Focus">
             <VBox.margin>
                 <Insets bottom="5.0" />
             </VBox.margin>
             <VBox.vgrow>ALWAYS</VBox.vgrow>
         </Button>
-        <Button fx:id="tasksButton" onAction="#onTasksButtonClick" style="-fx-background-color: #ffffff;" text="Tasks">
+        <Button fx:id="tasksButton" onAction="#onTasksButtonClick" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #ffffff;" text="Tasks">
             <VBox.margin>
                 <Insets bottom="5.0" />
             </VBox.margin>
@@ -29,8 +28,7 @@
      </VBox>
 
     <!-- NewViewContainer -->
-    <VBox fx:id="newViewContainer" HBox.hgrow="ALWAYS" fillWidth="true" spacing="10">
+    <VBox fx:id="newViewContainer" fillWidth="true" spacing="10" HBox.hgrow="ALWAYS">
     </VBox>
     <Label fx:id="message" style="-fx-text-fill: red" />
 </HBox>
-
