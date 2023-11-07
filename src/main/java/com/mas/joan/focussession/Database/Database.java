@@ -10,6 +10,10 @@ public class Database {
 
    List<Task> taskList = new ArrayList<>();
 
+    public Database() {
+        loadDatabaseFromFile();
+    }
+
     public void addTask(Task task){
         taskList.add(task);
         saveDatabaseToFile();
@@ -20,13 +24,15 @@ public class Database {
         saveDatabaseToFile();
     }
 
-    public void editTask(Task task){
-        taskList.set(taskList.indexOf(task), task);
-        saveDatabaseToFile();
+    public void updateTask(Task updatedTask) {
+        int index = taskList.indexOf(updatedTask);
+        if (index != -1) {
+            taskList.set(index, updatedTask);
+            saveDatabaseToFile();
+        }
     }
-
-    public Task getTask(Task task){
-        return taskList.get(taskList.indexOf(task));
+    public List<Task> getTask() {
+        return taskList;
     }
 
     public void saveDatabaseToFile(){

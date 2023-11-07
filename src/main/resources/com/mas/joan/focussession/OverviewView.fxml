@@ -20,6 +20,10 @@
         <font>
             <Font size="20.0" />
         </font></Label>
+    <HBox spacing="10">
+        <Label text="Search:"/>
+        <TextField fx:id="searchInput" promptText="Enter product"/>
+    </HBox>
     <TableView fx:id="closedTaskView">
         <columns>
             <TableColumn fx:id="closedTitleRow" prefWidth="70.99999558925629" text="Task">

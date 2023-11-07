@@ -5,43 +5,61 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="488" prefWidth="369" style="-fx-background-color: #202130" xmlns="http://javafx.com/javafx/17.0.2-ea"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mas.joan.focussession.Controller.TaskController">
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<VBox spacing="10" prefHeight="488" prefWidth="369" style="-fx-background-color: #202130" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mas.joan.focussession.Controller.TaskController">
     <padding>
-        <Insets topRightBottomLeft="10"/>
+        <Insets topRightBottomLeft="10" />
     </padding>
     <Label text="Open Tasks" textFill="WHITE">
         <font>
-            <Font size="20.0"/>
+            <Font size="20.0" />
         </font>
     </Label>
-    <TableView fx:id="taskView">
+    <HBox spacing="20">
+        <Label text="Search:" textFill="WHITE" />
+        <TextField fx:id="searchInput" promptText="Enter product" />
+    </HBox>
+    <TableView fx:id="taskView" >
         <columns>
+            <TableColumn fx:id="dateRow" prefWidth="160" text="Date Created">
+                <cellValueFactory>
+                    <PropertyValueFactory property="start_time"/>
+                </cellValueFactory>
+            </TableColumn>
             <TableColumn fx:id="titleRow" prefWidth="160" text="Task">
+                <cellValueFactory>
+                    <PropertyValueFactory property="title"/>
+                </cellValueFactory>
             </TableColumn>
             <TableColumn fx:id="descriptionRow" prefWidth="200" text="Description">
+                <cellValueFactory>
+                    <PropertyValueFactory property="description"/>
+                </cellValueFactory>
             </TableColumn>
             <TableColumn fx:id="timeRow" prefWidth="160" text="Time Elapsed">
+                <cellValueFactory>
+                    <PropertyValueFactory property="total_time"/>
+                </cellValueFactory>
             </TableColumn>
         </columns>
     </TableView>
 
     <VBox spacing="10">
         <padding>
-            <Insets bottom="10" top="10"/>
+            <Insets bottom="10" top="10" />
         </padding>
-        <TextField fx:id="title" promptText="Title"/>
-        <TextField fx:id="description" promptText="Description"/>
+        <TextField fx:id="title" promptText="Title" />
+        <TextField fx:id="description" promptText="Description" />
     </VBox>
 
     <HBox spacing="8" VBox.vgrow="NEVER">
         <padding>
-            <Insets bottom="10" top="10"/>
+            <Insets bottom="10" top="10" />
         </padding>
         <Button fx:id="addTask" minWidth="-Infinity" onAction="#onAddTaskButtonClick">Add New Task</Button>
         <Button fx:id="editTask" minWidth="-Infinity" onAction="#onEditTaskButtonClick">Edit Task</Button>
         <Button fx:id="deleteTask" minWidth="-Infinity" onAction="#onDeleteButtonClick">Delete Task</Button>
 
     </HBox>
-
+    <Label fx:id="message" style="-fx-text-fill: red" />
 </VBox>

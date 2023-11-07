@@ -51,6 +51,7 @@ public class MainViewController {
                 overviewController.setDatabase(database);
             } else if (controller instanceof TaskController taskController) {
                 taskController.setDatabase(database);
+                taskController.loadData();
             }
             newViewContainer.getChildren().setAll(navigationView);
         } catch (IOException e) {

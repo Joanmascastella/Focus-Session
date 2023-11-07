@@ -3,7 +3,8 @@ package com.mas.joan.focussession.Model;
 import com.mas.joan.focussession.Enums.Status;
 
 import java.io.Serializable;
-import java.lang.reflect.Constructor;
+import java.time.LocalDate;
+import java.util.Date;
 
 public class Task implements Serializable {
     private String title;
@@ -11,16 +12,16 @@ public class Task implements Serializable {
     private double total_time;
     private Status status;
 
-    public void Task(String title, String description, double total_time, Status status) {
+    private Date start_time;
+
+    public Task(LocalDate start_time, String title, String description, double total_time, Status status) {
+        this.start_time = new Date();
         this.title = title;
         this.description = description;
         this.total_time = total_time;
         this.status = status;
     }
-    public Task(String title, String description) {
-        this.title = title;
-        this.description = description;
-    }
+
 
     public String getTitle() {
         return title;
@@ -52,5 +53,13 @@ public class Task implements Serializable {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public Date getStart_time() {
+        return start_time;
+    }
+
+    public void setStart_time(LocalDate start_time) {
+       this.start_time = start_time;
     }
 }

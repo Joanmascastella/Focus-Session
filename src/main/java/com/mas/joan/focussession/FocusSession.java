@@ -25,7 +25,6 @@ public class FocusSession extends Application {
         stage.show();
         Runtime.getRuntime().addShutdownHook(new Thread(database::saveDatabaseToFile));
     }
-
     public static void main(String[] args) {
         launch();
     }
