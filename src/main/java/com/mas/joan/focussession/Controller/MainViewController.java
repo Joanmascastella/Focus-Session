@@ -71,7 +71,5 @@ public class MainViewController {
     public void onOverviewButtonClick() {
         loadView("/com/mas/joan/focussession/OverviewView.fxml");
     }
-
-
 }
 

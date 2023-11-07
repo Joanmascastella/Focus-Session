@@ -4,9 +4,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox style="-fx-background-color: #202130;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mas.joan.focussession.Controller.MainViewController">
+<HBox style="-fx-background-color: #202130;" prefHeight="488" prefWidth="369"  xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mas.joan.focussession.Controller.MainViewController">
     <!-- NavigationView -->
-    <VBox fx:id="navigationBox" spacing="10" style="-fx-padding: 1em; -fx-background-color: #0c0c12;">
+    <VBox  spacing="10" style="-fx-padding: 1em; -fx-background-color: #0c0c12;">
         <Button fx:id="focusButton" onAction="#onFocusButtonClick" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: #ffffff;" text="Focus">
             <VBox.margin>
                 <Insets bottom="5.0" />
