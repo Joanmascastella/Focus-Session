@@ -13,12 +13,9 @@ import java.io.IOException;
 public class FocusSession extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        Database database;
-        database = new Database();
+        Database database = Database.getInstance();
         FXMLLoader fxmlLoader = new FXMLLoader(FocusSession.class.getResource("MainView.fxml"));
         Parent root = fxmlLoader.load();
-        MainViewController focusSessionController = fxmlLoader.getController();
-       focusSessionController.setDatabase(database);
         Scene scene = new Scene(root, 888, 569);
         stage.setTitle("Focus Sessions");
         stage.setScene(scene);

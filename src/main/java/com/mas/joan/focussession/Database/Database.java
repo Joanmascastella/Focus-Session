@@ -8,50 +8,82 @@ import java.util.List;
 
 public class Database {
 
-   List<Task> taskList = new ArrayList<>();
-
-    public Database() {
+    List<Task> opentaskList = new ArrayList<>();
+    List<Task> closetaskList = new ArrayList<>();
+    private static Database instance;
+    private Database() {
         loadDatabaseFromFile();
     }
 
-    public void addTask(Task task){
-        taskList.add(task);
-        saveDatabaseToFile();
+    public static Database getInstance() {
+        if (instance == null) {
+            instance = new Database();
+        }
+        return instance;
     }
 
-    public void removeTask(Task task){
-        taskList.remove(task);
+
+        public void addOpenTask(Task task) {
+        if (task.getStatus() == com.mas.joan.focussession.Enums.Status.Open) {
+            opentaskList.add(task);
+            saveDatabaseToFile();
+        } else {
+            addOpenTask(task);
+            saveDatabaseToFile();
+        }
+
+    }
+
+    public void addCloseTask(Task task) {
+        if (task.getStatus() == com.mas.joan.focussession.Enums.Status.Resolved) {
+            closetaskList.add(task);
+            saveDatabaseToFile();
+        } else {
+            addOpenTask(task);
+            saveDatabaseToFile();
+        }
+    }
+
+    public void removeTask(Task task) {
+        opentaskList.remove(task);
         saveDatabaseToFile();
     }
 
     public void updateTask(Task updatedTask) {
-        int index = taskList.indexOf(updatedTask);
+        int index = opentaskList.indexOf(updatedTask);
         if (index != -1) {
-            taskList.set(index, updatedTask);
+            opentaskList.set(index, updatedTask);
             saveDatabaseToFile();
         }
     }
-    public List<Task> getTask() {
-        return taskList;
+
+    public List<Task> getOpenTask() {
+        return opentaskList;
     }
 
-    public void saveDatabaseToFile(){
+    public List<Task> getCloseTask() {
+        return closetaskList;
+    }
+
+    public void saveDatabaseToFile() {
         File file = new File("database.dat");
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
-            oos.writeObject(taskList);
-       } catch (IOException e) {
+            oos.writeObject(opentaskList);
+            oos.writeObject(closetaskList);
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
-    public void loadDatabaseFromFile(){
+
+    public void loadDatabaseFromFile() {
         File file = new File("database.dat");
         if (!file.exists()) {
             System.out.println("DAT file does not exist");
-        }
-        else {
+        } else {
             try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
-                taskList = (List<Task>) ois.readObject();
+                opentaskList = (List<Task>) ois.readObject();
+                closetaskList = (List<Task>) ois.readObject();
             } catch (IOException | ClassNotFoundException e) {
                 System.out.println("Error loading data from file");
                 e.printStackTrace();

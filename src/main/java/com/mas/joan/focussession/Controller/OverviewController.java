@@ -18,11 +18,7 @@ public class OverviewController implements Initializable {
     private ObservableList<Task> tasks;
     @FXML private TextField searchInput;
     @FXML private TableView<Task> taskView;
-    private Database database;
-    public void setDatabase(Database database) {
-        this.database = database;
-        loadData();
-    }
+    Database database = Database.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -41,10 +37,7 @@ public class OverviewController implements Initializable {
     }
     public void loadData() {
         try {
-            tasks.clear();
-            tasks.addAll(database.getTask().stream()
-                    .filter(task -> task.getStatus() == com.mas.joan.focussession.Enums.Status.Resolved)
-                    .collect(Collectors.toCollection(FXCollections::observableArrayList)));
+            tasks = FXCollections.observableArrayList(database.getCloseTask());
             taskView.setItems(tasks);
         } catch (Exception e) {
             e.printStackTrace();

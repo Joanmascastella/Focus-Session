@@ -22,11 +22,7 @@ public class MainViewController {
     private VBox newViewContainer;
     @FXML
     private Label message;
-    private Database database;
-
-    public void setDatabase(Database database) {
-        this.database = database;
-    }
+    Database database = Database.getInstance();
 
     public void initialize() {
         try {
@@ -46,13 +42,10 @@ public class MainViewController {
             VBox navigationView = loader.load();
             Object controller = loader.getController();
             if (controller instanceof FocusController focusController) {
-                focusController.setDatabase(database);
                 focusController.loadData();
             } else if (controller instanceof TaskController taskController) {
-                taskController.setDatabase(database);
                 taskController.loadData();
             } else if (controller instanceof OverviewController overviewController) {
-               overviewController.setDatabase(database);
                overviewController.loadData();
             }
 

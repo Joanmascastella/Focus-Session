@@ -34,14 +34,9 @@ public class TaskController implements Initializable {
     private Button editTask;
     @FXML
     private Button deleteTask;
-    private Database database;
     private Task selectedTaskForEdit;
     private final InputValidator inputValidator;
-
-    public void setDatabase(Database database) {
-        this.database = database;
-        loadData();
-    }
+    Database database = Database.getInstance();
 
     public TaskController() {
         inputValidator = new InputValidator();
@@ -74,10 +69,7 @@ public class TaskController implements Initializable {
 
     public void loadData() {
         try {
-            tasks.clear();
-            tasks.addAll(database.getTask().stream()
-                    .filter(task -> task.getStatus() == Open)
-                    .collect(Collectors.toCollection(FXCollections::observableArrayList)));
+            tasks = FXCollections.observableArrayList(database.getOpenTask());
             taskView.setItems(tasks);
         } catch (Exception e) {
             e.printStackTrace();
@@ -87,11 +79,11 @@ public class TaskController implements Initializable {
 
     public void onAddTaskButtonClick() {
         LocalDate date = LocalDate.now();
-        if(validateFields(title.getText(), description.getText())) {
+        if (validateFields(title.getText(), description.getText())) {
             return;
         }
         Task task = new Task(date, title.getText(), description.getText(), 0, Open);
-        database.addTask(task);
+        database.addOpenTask(task);
         tasks.add(task);
         taskView.setItems(tasks);
         clearTextFields();
@@ -139,7 +131,8 @@ public class TaskController implements Initializable {
             ObservableList<Task> tasksToClose = taskView.getSelectionModel().getSelectedItems();
             for (Task task : tasksToClose) {
                 task.setStatus(com.mas.joan.focussession.Enums.Status.Resolved);
-                database.updateTask(task);
+                database.addCloseTask(task);
+                database.removeTask(task);
             }
             loadData();
             message.setText("Task(s) have been closed successfully.");
@@ -148,6 +141,7 @@ public class TaskController implements Initializable {
             message.setText("Error closing task(s).");
         }
     }
+
     private void clearTextFields() {
         title.clear();
         description.clear();
@@ -160,7 +154,6 @@ public class TaskController implements Initializable {
         }
         return true;
     }
-
 
 
 }

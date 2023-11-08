@@ -18,11 +18,7 @@ import static com.mas.joan.focussession.Enums.Status.Open;
 public class FocusController implements Initializable {
     private ObservableList<Task> tasks;
     public TableView taskView;
-    private Database database;
-    public void setDatabase(Database database) {
-        this.database = database;
-        loadData();
-    }
+    Database database = Database.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -33,10 +29,7 @@ public class FocusController implements Initializable {
 
     public void loadData() {
         try {
-            tasks.clear();
-            tasks.addAll(database.getTask().stream()
-                    .filter(task -> task.getStatus() == Open)
-                    .collect(Collectors.toCollection(FXCollections::observableArrayList)));
+            tasks = FXCollections.observableArrayList(database.getOpenTask());
             taskView.setItems(tasks);
         } catch (Exception e) {
             e.printStackTrace();
