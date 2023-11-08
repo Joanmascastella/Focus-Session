@@ -22,7 +22,7 @@ public class MainViewController {
     private VBox newViewContainer;
     @FXML
     private Label message;
-    Database database = Database.getInstance();
+    private FocusController focusController;
 
     public void initialize() {
         try {
@@ -41,15 +41,21 @@ public class MainViewController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             VBox navigationView = loader.load();
             Object controller = loader.getController();
-            if (controller instanceof FocusController focusController) {
+
+            if (controller instanceof FocusController) {
+                focusController = (FocusController) controller;
                 focusController.loadData();
             } else if (controller instanceof TaskController taskController) {
                 taskController.loadData();
             } else if (controller instanceof OverviewController overviewController) {
-               overviewController.loadData();
+                overviewController.loadData();
             }
 
-            newViewContainer.getChildren().setAll(navigationView);
+            // Before switching views, check if it's possible
+            if (controller != focusController || canSwitchView()) {
+                newViewContainer.getChildren().setAll(navigationView);
+            }
+
         } catch (IOException e) {
             message.setText("Unable to find view");
         } catch (Exception e) {
@@ -57,17 +63,30 @@ public class MainViewController {
         }
     }
 
+    private boolean canSwitchView() {
+        if (focusController != null && focusController.isTimerRunning()) {
+            focusController.handleViewSwitching();
+            return false;
+        }
+        return true;
+    }
 
     public void onFocusButtonClick() {
-        loadView("/com/mas/joan/focussession/FocusView.fxml");
+        if (canSwitchView()) {
+            loadView("/com/mas/joan/focussession/FocusView.fxml");
+        }
     }
 
     public void onTasksButtonClick() {
-        loadView("/com/mas/joan/focussession/TaskView.fxml");
+        if (canSwitchView()) {
+            loadView("/com/mas/joan/focussession/TaskView.fxml");
+        }
     }
 
     public void onOverviewButtonClick() {
-        loadView("/com/mas/joan/focussession/OverviewView.fxml");
+        if (canSwitchView()) {
+            loadView("/com/mas/joan/focussession/OverviewView.fxml");
+        }
     }
 }
 

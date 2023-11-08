@@ -1,21 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.geometry.Insets?>
-<VBox alignment="CENTER" prefHeight="488" prefWidth="369" spacing="10" style="-fx-background-color: #202130" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mas.joan.focussession.Controller.FocusController">
+<VBox alignment="CENTER" prefHeight="488" prefWidth="369" spacing="10" style="-fx-background-color: #202130"
+      xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.mas.joan.focussession.Controller.FocusController">
     <padding>
-        <Insets topRightBottomLeft="10" />
+        <Insets topRightBottomLeft="10"/>
     </padding>
-    <Label style="-fx-text-fill: white; -fx-font-size: 30px; -fx-font-weight: bold;" text="00:00" />
+
+    <HBox alignment="CENTER" spacing="20">
+        <Label fx:id="timerText" style="-fx-text-fill: white; -fx-font-size: 30px; -fx-font-weight: bold;" text="00:00:00"/>
+    </HBox>
+
+    <HBox spacing="5" alignment="CENTER">
+        <RadioButton fx:id="thirtyMinute" onAction="#setTimerThirty" text="30 Minutes" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="12.0"/>
+            </font>
+        </RadioButton>
+        <RadioButton fx:id="sixtyMinute" text="60 Minutes" onAction="#setTimerSixty"  textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="12.0"/>
+            </font>
+        </RadioButton>
+        <RadioButton fx:id="ninetyMinute" text="90 Minutes" onAction="#setTimerNinety"  textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="12.0"/>
+            </font>
+        </RadioButton>
+    </HBox>
+
+    <HBox spacing="5" alignment="CENTER">
+        <TextField fx:id="customAmount" promptText="Custom Amount"/>
+    </HBox>
 
     <!-- Add padding below the HBox -->
-    <HBox alignment="CENTER" spacing="10" VBox.vgrow="NEVER" style="-fx-padding: 0 0 20 0;">
-        <Button onAction="#handleStart" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF;" text="Start" />
-        <Button onAction="#handlePause" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF;" text="Pause" />
-        <Button onAction="#handleStop" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF;" text="Stop" />
+    <HBox alignment="CENTER" spacing="10" style="-fx-padding: 0 0 20 0;" VBox.vgrow="NEVER">
+        <Button onAction="#handleStart" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF;"
+                text="Start"/>
+        <Button onAction="#handlePause" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF;"
+                text="Pause"/>
+        <Button onAction="#handleStop" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF;"
+                text="Stop"/>
     </HBox>
 
     <!-- Decrease the width of the TableView -->
@@ -23,25 +54,25 @@
         <columns>
             <TableColumn fx:id="dateRow" prefWidth="100" text="Date Created">
                 <cellValueFactory>
-                    <PropertyValueFactory property="start_time" />
+                    <PropertyValueFactory property="start_time"/>
                 </cellValueFactory>
             </TableColumn>
             <TableColumn fx:id="titleRow" prefWidth="100" text="Task">
                 <cellValueFactory>
-                    <PropertyValueFactory property="title" />
+                    <PropertyValueFactory property="title"/>
                 </cellValueFactory>
             </TableColumn>
             <TableColumn fx:id="descriptionRow" prefWidth="140" text="Description">
                 <cellValueFactory>
-                    <PropertyValueFactory property="description" />
+                    <PropertyValueFactory property="description"/>
                 </cellValueFactory>
             </TableColumn>
             <TableColumn fx:id="timeRow" prefWidth="160" text="Time Elapsed">
                 <cellValueFactory>
-                    <PropertyValueFactory property="total_time" />
+                    <PropertyValueFactory property="total_time"/>
                 </cellValueFactory>
             </TableColumn>
         </columns>
     </TableView>
-
+    <Label fx:id="message" style="-fx-text-fill: red"/>
 </VBox>
